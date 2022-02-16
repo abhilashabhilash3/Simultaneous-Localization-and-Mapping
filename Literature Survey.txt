@@ -1,0 +1,97 @@
+Literature Survey
+
+Monocular vision SLAM for indoor aerial vehicles
+This paper presents a novel indoor navigation and ranging strategy by using a monocular camera. 
+The proposed algorithms are integrated with simultaneous localization and mapping (SLAM) with a 
+focus on indoor aerial vehicle applications. We experimentally validate the proposed algorithms 
+by using a fully self-contained micro aerial vehicle (MAV) with on-board image processing and 
+SLAM capabilities. The range measurement strategy is inspired by the key adaptive mechanisms for
+depth perception and pattern recognition found in humans and intelligent animals. The navigation
+strategy assumes an unknown, GPS-denied environment, which is representable via corner-like 
+feature points and straight architectural lines. Experimental results show that the system is only
+limited by the capabilities of the camera and the availability of good corners.
+
+
+SLAM for dummies
+The goal of this document is to give a tutorial introduction to the field of SLAM
+(Simultaneous Localization And Mapping) for mobile robots. There are numerous
+papers on the subject but for someone new in the field it will require many hours of
+research to understand many of the intricacies involved in implementing SLAM. The
+hope is thus to present the subject in a clear and concise manner while keeping the
+prerequisites required to understand the document to a minimum. It should actually
+be possible to sit down and implement basic SLAM after having read this paper.
+SLAM can be implemented in many ways. First of all there is a huge amount of
+different hardware that can be used. Secondly SLAM is more like a concept than a
+single algorithm. There are many steps involved in SLAM and these different steps
+can be implemented using a number of different algorithms. In most cases we explain
+a single approach to these different steps but hint at other possible ways to do them
+for the purpose of further reading.
+The motivation behind writing this paper is primarily to help ourselves understand
+SLAM better. One will always get a better knowledge of a subject by teaching it.
+Second of all most of the existing SLAM papers are very theoretic and primarily
+focus on innovations in small areas of SLAM, which of course is their purpose. The
+purpose of this paper is to be very practical and focus on a simple, basic SLAM
+algorithm that can be used as a starting point to get to know SLAM better. For people
+with some background knowledge in SLAM we here present a complete solution for
+SLAM using EKF (Extended Kalman Filter). By complete we do not mean perfect.
+What we mean is that we cover all the basic steps required to get an implementation
+up and running. It must also be noted that SLAM as such has not been completely
+solved and there is still considerable research going on in the field. 
+
+Natural terrain detection
+This paper describes a natural terrain detection algorithm and a SLAM algorithm 
+using a LIDAR sensor for an unmanned ground vehicle. We describe how features are
+detected from natural terrain, and then we localize the vehicle’s position and 
+compose a map with the detected features. The LIDAR equipped on the experimental 
+vehicle to scan natural terrain. The scan data is included many kinds of intrinsic
+disturbance on uneven terrain: a banded tree, a branch of a tree, uniform size of 
+bush, undefined or unexpected objects. We apply a RANSAC (RANdom SAmple Consensus)
+algorithm to discriminate ground point cloud data and object point cloud data, and
+then separate bush point cloud data and tree point cloud data by two combination 
+algorithms; GMM (Gaussian Mixture Model) and EM (Expectation Maximization). Both GMM 
+and EM algorithms are for extracting features and classifying groups, respectively. 
+We propose the double FCM (Fuzzy C-mean clustering) algorithm to robustly estimate 
+the number of trees and its position. The Extended Kalman Filter approach to 
+simultaneous localization and mapping (EKF-SLAM) is composed of extracted tree features. 
+The mahalanobis distance is applied to remain consistency for feature correspondence 
+which is for data association. Finally, we show the results which is experienced in 
+a tree-filled mountain.
+
+Visual SLAM for autonomous groung vehicles, Robotics and Automation (ICRA), 2011 IEEE International Conference on 2011
+Simultaneous Localization and Mapping (SLAM) and Visual SLAM (V-SLAM) in particular 
+have been an active area of research lately. In V-SLAM the main focus is most often 
+laid on the localization part of the problem allowing for a drift free motion estimate. 
+To this end, a sparse set of landmarks is tracked and their position is estimated. 
+However, this set of landmarks (rendering the map) is often too sparse for tasks in 
+autonomous driving such as navigation, path planning, obstacle avoidance etc. Some 
+methods keep the raw measurements for past robot poses to address the sparsity problem 
+often resulting in a pose only SLAM akin to laser scanner SLAM. For the stereo case, 
+this is however impractical due to the high noise of stereo reconstructed point clouds. 
+In this paper we propose a dense stereo V-SLAM algorithm that estimates a dense 3D map 
+representation which is more accurate than raw stereo measurements. Thereto, we run a 
+sparse V SLAM system, take the resulting pose estimates to compute a locally dense 
+representation from dense stereo correspondences. This dense representation is expressed 
+in local coordinate systems which are tracked as part of the SLAM estimate. This allows 
+the dense part to be continuously updated. Our system is driven by visual odometry priors 
+to achieve high robustness when tracking landmarks. Moreover, the sparse part of the SLAM 
+system uses recently published sub mapping techniques to achieve constant runtime complexity 
+most of the time. The improved accuracy over raw stereo measurements is shown in a Monte 
+Carlo simulation. Finally, we demonstrate the feasibility of our method by presenting outdoor 
+experiments of a car like robot.
+
+Embedded visual SLAM: Applications for Low-Cost Consumer Robots, Robotics & Automation Magazine, IEEE 2013
+A camera poses a highly attractive choice as a sensor in implementing simultaneous localization 
+and mapping (SLAM) for low-cost consumer robots such as home cleaning robots. This is due to 
+its low cost, light weight, and low power consumption. However, most of the visual SLAMs available 
+to date are not designed and, consequently, not suitable for use in a low-cost embedded SLAM 
+for consumer robots. This article presents a computationally light yet performance-wise robust 
+SLAM algorithm and its implementation as an embedded system for low-cost consumer robots using 
+an upward-looking camera. Especially for a large-scale mapping of indoor environments, methods 
+of pose graph optimization as well as submapping are employed. An occupancy grid map is used to 
+integrate an efficient Kalman filter-based localization into a SLAM framework. Furthermore, an 
+algorithmic visual compass is introduced as a means of reducing the computational complexity 
+involved in pose graph optimization, taking advantage of the distinct geometric features of the 
+scenes captured by an upward-looking camera. The proposed visual SLAM is implemented in a real 
+home cleaning robot as an embedded system using an ARM11 processor. Extensive test results 
+demonstrate the power of the proposed embedded visual SLAM in terms of not only its computational 
+efficiency but also its performance robustness in realworld applications.

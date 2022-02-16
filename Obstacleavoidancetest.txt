@@ -1,0 +1,135 @@
+int a2 = 0;
+int a1 = 0;
+int a0 = 0;
+void setup() 
+{
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+ // pinMode(24, INPUT);
+ // pinMode(25, INPUT);\
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  digitalWrite(9, HIGH);
+  digitalWrite(10, HIGH);
+}
+
+
+void loop() 
+{
+    a0 = digitalRead(A0);    //Left IR sensor
+    a1 = digitalRead(A1);    //Front IR sensor
+    a2 = digitalRead(A2);    //Right IR sensor
+
+/*Serial.print(a0);
+Serial.print("\t");
+Serial.print(a1);
+Serial.print("\t");
+Serial.print(a2);
+Serial.print("\n");  // put your main code here, to run repeatedly:
+delay(1000); */
+
+if((a0=='0')&&(a1=='0')&&(a2=='0'))
+  {
+    halt();
+    reverse();
+    forward();
+  }
+
+ if((a1=='1')&&(a2=='0'))
+  {
+    turnright();
+    forward();
+  }
+  
+  else if((a0=='1')&&(a2=='0'))
+  {
+    turnleft();
+    forward();
+  }
+  
+  else if((a0=='0')&&(a1=='1')&&(a2=='1'))
+  {
+    slightright();
+    forward();
+  }
+  
+  else
+  {
+    //slightleft();
+    forward();
+  }
+
+void forward()
+{
+ digitalWrite(4, HIGH);
+ digitalWrite(5, LOW);
+ digitalWrite(6, HIGH);
+ digitalWrite(7, LOW);
+ delay(2000);
+ return;
+}
+
+void halt()
+{
+ digitalWrite(4, LOW);
+ digitalWrite(5, LOW);
+ digitalWrite(6, LOW);
+ digitalWrite(7, LOW);
+ return;
+}
+
+void reverse()
+{
+ digitalWrite(4, HIGH);
+ digitalWrite(5, LOW);
+ digitalWrite(6, LOW);
+ digitalWrite(7, HIGH);
+ delay(2000);
+ return;
+}
+
+void turnright()
+{
+ digitalWrite(4, HIGH);
+ digitalWrite(5, LOW);
+ digitalWrite(6, HIGH);
+ digitalWrite(7, LOW);
+ delay(1000);
+ return;
+}
+
+void turnleft()
+{
+ digitalWrite(4, HIGH);
+ digitalWrite(5, LOW);
+ digitalWrite(6, LOW);
+ digitalWrite(7, HIGH);
+ delay(1000);
+ return;
+}
+
+void slightright()
+{
+ digitalWrite(4, HIGH);
+ digitalWrite(5, LOW);
+ digitalWrite(6, HIGH);
+ digitalWrite(7, LOW);
+ delay(500);
+ return;
+}
+
+void slightleft()
+{
+ digitalWrite(4, HIGH);
+ digitalWrite(5, LOW);
+ digitalWrite(6, LOW);
+ digitalWrite(7, HIGH);
+ delay(500);
+ return;
+}
+}
+
